@@ -1,3 +1,5 @@
+// This file was previously at app/components/UserScores.tsx
+// No changes needed to its content as it was already correct.
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 interface UserScoresProps {

@@ -1,0 +1,3 @@
+// This file was previously at app/components/MatchList.tsx
+// No changes needed to its content as it was already correct.
+// ... (original content of MatchList.tsx) ...

@@ -1,3 +1,5 @@
+// This file was previously at app/components/PersonalityBadge.tsx
+// No changes needed to its content as it was already correct.
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 type PersonalityType =
