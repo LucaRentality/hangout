@@ -20,6 +20,30 @@ export function DebugInfo() {
     setDebugInfo(info)
   }, [])
 
+  const setupDemoMode = () => {
+    const mockUserProfile = {
+      name: "Demo User",
+      age: 28,
+      personalityType: "ENFP",
+      bio: "Hey there! 👋 I'm Demo User, a 28-year-old ENFP living in San Francisco. I love hiking, photography, and trying new restaurants. Looking for fun adventures and meaningful connections!",
+      photos: ["/placeholder.svg?height=300&width=300"],
+      interests: ["Hiking", "Photography", "Travel", "Cooking", "Music"],
+      favoriteActivities: ["Mountain climbing", "City exploration", "Food tasting", "Concert going"],
+      genderType: "Other",
+      lookingFor: ["Fun", "Friends"],
+      location: "San Francisco, CA",
+      email: "demo@hangout.app",
+      dateOfBirth: "1995-06-15",
+    }
+
+    localStorage.setItem("userProfile", JSON.stringify(mockUserProfile))
+    localStorage.setItem("personalityType", "ENFP")
+    localStorage.setItem("lastTestDate", new Date().toISOString())
+    localStorage.setItem("isLoggedIn", "true")
+
+    window.location.reload()
+  }
+
   if (!isVisible) {
     return (
       <div className="fixed bottom-4 right-4 z-50">
@@ -51,6 +75,9 @@ export function DebugInfo() {
             </Button>
             <Button size="sm" onClick={() => window.location.reload()}>
               Reload
+            </Button>
+            <Button size="sm" onClick={setupDemoMode} variant="outline">
+              Demo Mode
             </Button>
           </div>
         </CardContent>

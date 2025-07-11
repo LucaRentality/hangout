@@ -107,42 +107,13 @@ export default function NearbyMatches() {
   const { toast } = useToast()
 
   useEffect(() => {
-    const getLocation = () => {
-      if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            console.log("Geolocation success:", position.coords)
-            // In a real app, you would use these coordinates to fetch nearby users
-            // For this example, we'll just use the mock data
-            const compatibleMatches = findMatches(currentUser, mockUsers)
-            setMatches(compatibleMatches)
-            setFilteredMatches(compatibleMatches)
-            setIsLoading(false)
-            setError(null)
-          },
-          (error) => {
-            console.error("Geolocation error:", error)
-            setError(`Unable to get your location: ${error.message}`)
-            setIsLoading(false)
-            // Fallback to mock data even if geolocation fails
-            const compatibleMatches = findMatches(currentUser, mockUsers)
-            setMatches(compatibleMatches)
-            setFilteredMatches(compatibleMatches)
-          },
-          { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 },
-        )
-      } else {
-        console.error("Geolocation is not supported by this browser")
-        setError("Geolocation is not supported by your browser. Showing matches from a default location.")
-        setIsLoading(false)
-        // Fallback to mock data if geolocation is not supported
-        const compatibleMatches = findMatches(currentUser, mockUsers)
-        setMatches(compatibleMatches)
-        setFilteredMatches(compatibleMatches)
-      }
-    }
-
-    getLocation()
+    // Always use mock data for demo purposes
+    console.log("Loading mock matches for demo...")
+    const compatibleMatches = findMatches(currentUser, mockUsers)
+    setMatches(compatibleMatches)
+    setFilteredMatches(compatibleMatches)
+    setIsLoading(false)
+    setError(null)
   }, [])
 
   useEffect(() => {
@@ -376,7 +347,7 @@ export default function NearbyMatches() {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <Avatar>
-                <AvatarImage src={selectedMatch.avatar} alt={selectedMatch.name} />
+                <AvatarImage src={selectedMatch.avatar || "/placeholder.svg"} alt={selectedMatch.name} />
                 <AvatarFallback>
                   {selectedMatch.name
                     .split(" ")
@@ -428,7 +399,7 @@ export default function NearbyMatches() {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-2">
                           <Avatar>
-                            <AvatarImage src={match.avatar} alt={match.name} />
+                            <AvatarImage src={match.avatar || "/placeholder.svg"} alt={match.name} />
                             <AvatarFallback>
                               {match.name
                                 .split(" ")

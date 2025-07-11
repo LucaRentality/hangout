@@ -11,6 +11,33 @@ export function ComingSoon() {
     router.push("/register")
   }
 
+  const handleSkipToDemo = () => {
+    // Set up mock user data
+    const mockUserProfile = {
+      name: "Demo User",
+      age: 28,
+      personalityType: "ENFP",
+      bio: "Hey there! 👋 I'm Demo User, a 28-year-old ENFP living in San Francisco. I love hiking, photography, and trying new restaurants. Looking for fun adventures and meaningful connections!",
+      photos: ["/placeholder.svg?height=300&width=300"],
+      interests: ["Hiking", "Photography", "Travel", "Cooking", "Music"],
+      favoriteActivities: ["Mountain climbing", "City exploration", "Food tasting", "Concert going"],
+      genderType: "Other",
+      lookingFor: ["Fun", "Friends"],
+      location: "San Francisco, CA",
+      email: "demo@hangout.app",
+      dateOfBirth: "1995-06-15",
+    }
+
+    // Store mock data in localStorage
+    localStorage.setItem("userProfile", JSON.stringify(mockUserProfile))
+    localStorage.setItem("personalityType", "ENFP")
+    localStorage.setItem("lastTestDate", new Date().toISOString())
+    localStorage.setItem("isLoggedIn", "true")
+
+    // Navigate to dashboard
+    router.push("/dashboard")
+  }
+
   return (
     <div className="min-h-screen bg-white flex flex-col justify-center items-center p-4">
       <div className="w-full max-w-4xl mb-12">
@@ -72,6 +99,14 @@ export function ComingSoon() {
       >
         <Button type="button" onClick={handleRegister} className="bg-primary text-white hover:bg-primary/90">
           Register Now
+        </Button>
+        <Button
+          type="button"
+          onClick={handleSkipToDemo}
+          variant="outline"
+          className="border-primary text-primary hover:bg-primary hover:text-white bg-transparent"
+        >
+          Skip to Demo
         </Button>
       </form>
     </div>
